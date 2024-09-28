@@ -14,7 +14,7 @@
         "^[A-Z_]+$": {
           "type": "string",
           "description": "Human-readable label for the key",
-          "oneOf": [
+          "anyOf": [
             {
               "enum": [
                 "Discord Token",
