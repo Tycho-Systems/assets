@@ -5,21 +5,28 @@
     "UUID": {
       "type": "string",
       "format": "uuid",
-      "description": "Unique identifier for the bot"
+      "description": "Unique internal identifier specific for the bot"
     },
     "env": {
       "type": "object",
-      "description": "Map of .env keys to readable labels",
+      "description": "`.env` keys mapped to readable labels",
       "patternProperties": {
         "^[A-Z_]+$": {
           "type": "string",
-          "description": "Human-readable label for the .env key",
-          "enum": [
-            "Discord Token",
-            "ER:LC API Key",
-            "Custom Label"
-          ],
-          "default": "Custom Label"
+          "description": "Human-readable label for the key",
+          "oneOf": [
+            {
+              "enum": [
+                "Discord Token",
+                "ER:LC API Key"
+              ],
+              "description": "Predefined label options"
+            },
+            {
+              "type": "string",
+              "description": "Custom label"
+            }
+          ]
         }
       },
       "additionalProperties": false
